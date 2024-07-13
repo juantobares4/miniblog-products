@@ -1,0 +1,32 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<div class="container mt-3">
+    <h2 class="mb-4">Crear Producto</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mt-1">
+            <label class="mx-3" for="">Nombre:</label><!-- el atributo "name" es el mismo del modelo (Por ej.: name = "price")-->
+            {{ form.name }}
+        </div>
+        <div class="mt-1">
+            <label class="mx-3" for="">Precio:</label>
+            {{ form.price }}
+        </div>
+        <div class="mt-1">
+            <label class="mx-3" for="">Categoría:</label>
+            {{ form.category }}
+        </div>
+        <div class="mt-1">
+            <label class="mx-3" for="">Stock:</label>
+            {{ form.stock }}
+        </div>
+        <div class="mt-1">
+            <label class="mx-3" for="">Descripción:</label>
+            {{ form.description }}
+        </div>
+        <div class="mt-1">
+            <button type="submit" class="btn btn-primary mt-4 mb-5 mx-3 w-100">Guardar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
