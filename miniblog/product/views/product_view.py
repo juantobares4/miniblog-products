@@ -73,7 +73,7 @@ class ProductUpdate(View):
         form = ProductForm(instance = product)
 
         return render(request,          
-            'products/update.html',
+            'products/update.html', 
             dict(
                 product = product,
                 categories = categorias,
