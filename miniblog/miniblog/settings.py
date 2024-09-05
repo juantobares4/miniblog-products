@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "product",
     "home",
-    "users"
+    "users",
+    "api_v1",
 
 ]
 
