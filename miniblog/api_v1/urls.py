@@ -6,4 +6,3 @@ router = DefaultRouter()
 router.register(r'products', ProductViewSet, 'products')
 
 urlpatterns = router.urls
-

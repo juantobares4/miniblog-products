@@ -200,3 +200,9 @@ sentry_sdk.init( # Puede ir en cualquier lado del archivo settings.py
     }
 
 } """ 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'api_v1.paginations.Pagination',
+    'PAGE_SIZE': 100 # Limite de resultados mostrados. 
+
+}
