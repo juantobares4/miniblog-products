@@ -37,3 +37,24 @@ class ProductSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
     
+    """ def create(self, validated_data):
+        category_data = validated_data.pop(
+            'category', None
+
+        ) # Extrae del diccionario la key 'category' y la almacena en la variable.
+
+        category, created = Category.objects.get_or_create(
+            **category_data
+
+        ) # Recibe dos parámetros: Categoría y un booleano. Si es True es que fue creado. Si es False, es que lo obtuvo.
+
+        product = Product.objects.create(
+            name = validated_data['name'],
+            price = validated_data['price'],
+            stock = validated_data['stock'],
+            active = True,
+            category = category
+        
+        )
+
+        return product # El ProductSerializer se va a encargar de parsearlo a JSON para mostrarlo en el FrontEnd. """
