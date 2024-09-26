@@ -1,4 +1,7 @@
+import csv
+from django.http import HttpResponse
 from rest_framework import status
+from rest_framework.decorators import action # Los decoradores son métodos que adicionan funcionalidades a otros métodos.
 from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -43,3 +46,43 @@ class ProductViewSet(ModelViewSet): # ModelViewSet viene con todos los métodos 
         instance.delete()
         
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    @action(detail=False, methods=['get'], url_path='download-products-csv')
+    def download_csv(self, request):
+        # Que va a retornar y como se va a llamar
+        response = HttpResponse(content_type='text/csv') 
+        response['Content-Disposition'] = 'attachment; filename = "products.csv"' # 
+        
+        file = csv.writer(response)
+
+        for product in self.get_queryset():
+            file.writerow(
+                [
+                    product.name, 
+                    product.description, 
+                    product.description, 
+                    product.price, 
+                    product.stock, 
+                    product.category.name if product.category else 'No posee categoría'
+                ]
+
+            )
+
+        return response
+    
+    @action(detail=False, methods=['get'], url_path='download-price-stock-csv')
+    def download_price_stock(self, request):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename = "total_price.csv"'
+
+        file = csv.writer(response)
+
+        for product in self.get_queryset():
+            file.writerow(
+            [
+                product.name, product.price, product.stock, product.price * product.stock
+            ]
+
+        )
+
+        return response
