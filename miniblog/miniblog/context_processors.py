@@ -1,7 +1,7 @@
 # Nos permite agregar información al contexto de la aplicación. Es decir, podemos utilizarla desde cualquier lado.
 
 from django.core.cache import cache
-from product.models import Product, Category 
+from product.models import Product, Category
 
 def all_names_products(request, ):
     products = cache.get('products')

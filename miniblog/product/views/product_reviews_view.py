@@ -8,15 +8,31 @@ from django.shortcuts import (
 
 )
 
+from django.utils.translation import (
+    activate,
+    get_language,
+    gettext_lazy as _,
+    deactivate
+
+)
+
 from django.utils.decorators import method_decorator
 from django.views import View
 from product.models import ProductReview 
 from product.repositories.product import ProductRepository
 from product.repositories.product_reviews import ProductReviewRepository
+from users.models import Profile
 
-@method_decorator(login_required(login_url='login'), name='dispatch') # Da error si quiero acceder al método sin loggearme. Debo estar logeado para acceder a él.
+@method_decorator(login_required(login_url='login'), name='dispatch') # Da error si quiero acceder al método sin logearme. Debo estar logeado para acceder a él.
 class ProductReviewView(View):
     def get(self, request):
+
+        if not request.user.is_anonymous:
+            user_profile = Profile.objects.get(user = request.user)
+            selected_lang = user_profile.language
+        
+            activate(selected_lang  ) # Activa el lenguaje inglés en este caso.
+
         repo = ProductReviewRepository()
         reviews = repo.get_all()
 
