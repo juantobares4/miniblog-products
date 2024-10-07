@@ -26,12 +26,10 @@ from users.models import Profile
 @method_decorator(login_required(login_url='login'), name='dispatch') # Da error si quiero acceder al método sin logearme. Debo estar logeado para acceder a él.
 class ProductReviewView(View):
     def get(self, request):
-
         if not request.user.is_anonymous:
-            user_profile = Profile.objects.get(user = request.user)
-            selected_lang = user_profile.language
-        
-            activate(selected_lang  ) # Activa el lenguaje inglés en este caso.
+            profile = Profile.objects.get(user=request.user)
+            lang = profile.language
+            activate(lang)
 
         repo = ProductReviewRepository()
         reviews = repo.get_all()

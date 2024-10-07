@@ -19,23 +19,26 @@ class Product(models.Model):
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, verbose_name=_('name'))
     description = models.TextField(
         null=True,
         blank=True,
+        verbose_name=_('description')
     )
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
+        verbose_name=_('price')
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
         related_name='products',
         null=True,
+        verbose_name=_('category')
     )
-    stock = models.IntegerField(default=0)
-    active = models.BooleanField(default = True)
+    stock = models.IntegerField(default=0, verbose_name=_('stock'))
+    active = models.BooleanField(default = True, verbose_name=_('active'))
 
     objects = ProductQuerySet.as_manager() 
 

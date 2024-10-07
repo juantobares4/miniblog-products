@@ -12,6 +12,7 @@ from django.views import (
 )
 
 from users.forms import UserRegisterForm
+from users.models import Profile
 
 # Create your views here.
 
@@ -93,3 +94,15 @@ def index_view(request):
 
     )
 
+class ChangeLanguage(View):
+    def get(self, request):
+        profile = Profile.objects.get(user = request.user)
+        lang = profile.language
+
+        if lang == 'es':
+            profile.language = 'en'
+        else:
+            profile.language = 'es'
+        
+        profile.save()
+        return redirect(request.META.get('HTTP_REFERER', 'index')) 

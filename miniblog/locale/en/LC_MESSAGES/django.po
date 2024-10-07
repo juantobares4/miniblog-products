@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-02 20:29-0300\n"
+"POT-Creation-Date: 2024-10-04 10:23-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: miniblog/settings.py:123
 msgid "English"
 msgstr ""
@@ -24,3 +25,53 @@ msgstr ""
 #: miniblog/settings.py:124
 msgid "Español"
 msgstr ""
+
+#: product/models.py:22
+msgid "name"
+msgstr "name"
+
+#: product/models.py:26
+msgid "description"
+msgstr "description"
+
+#: product/models.py:31
+msgid "price"
+msgstr "price"
+
+#: product/models.py:38
+msgid "category"
+msgstr "category"
+
+#: product/models.py:40
+msgid "stock"
+msgstr "stock"
+
+#: product/models.py:41
+msgid "active"
+msgstr "active"
+
+#: product/templates/product_reviews/list.html:11
+msgid "Producto"
+msgstr "Product"
+
+#: product/templates/product_reviews/list.html:12
+msgid "Autor"
+msgstr "Author"
+
+#: product/templates/product_reviews/list.html:13
+msgid "Opinión"
+msgstr "Opinion"
+
+#: product/templates/product_reviews/list.html:14
+msgid "Fecha de publicación"
+msgstr "Publication Date"
+
+#: product/templates/product_reviews/list.html:15
+msgid "Valoración"
+msgstr "Rating"
+
+msgid "Lista de Opiniones"
+msgstr "Reviews List"
+
+msgid "Dar una opinión"
+msgstr "Write Review"

@@ -1,16 +1,18 @@
 {% extends 'home/base.html' %}
 {% block content %}
+
+{% load i18n %} 
 <div class="container mt-3">
-    <h2>Lista de Opiniones</h2>
-    <a href="{% url 'product_review_create' %}" class="btn btn-primary mt-3 mb-5">Dar una opinión</a>
+    <h2>{% trans "Lista de Opiniones" %}</h2>
+    <a href="{% url 'product_review_create' %}" class="btn btn-primary mt-3 mb-5">{% trans 'Dar una opinión' %}</a>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Producto</th>
-                <th>Autor</th>
-                <th>Opinión</th>
-                <th>Fecha de publicación</th>
-                <th>Valoración</th>
+                <th>{% trans "Producto" %}</th>
+                <th>{% trans "Autor" %}</th>
+                <th>{% trans "Opinión" %}</th>
+                <th>{% trans "Fecha de publicación" %}</th>
+                <th>{% trans "Valoración" %}</th>
             </tr>
         </thead>
         <tbody>

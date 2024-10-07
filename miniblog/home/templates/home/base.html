@@ -16,6 +16,9 @@
             <a class="navbar-brand" href="{% url 'product_reviews' %}">Opiniones</a>
             <a class="navbar-brand" href="{% url 'product_images' %}">Imágenes</a>
             <a class="navbar-brand" href="{% url 'suppliers_list' %}">Proveedores</a>
+            <a class="btn btn-info me-3" href="{% url 'change_language' %}">
+                {% if profile.language == 'es' %} EN {% else %} ES {% endif %}
+            </a>
             {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}" class="btn btn-danger">Salir</a>
             {% else %}

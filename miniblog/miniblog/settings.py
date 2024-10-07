@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import sentry_sdk
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -70,7 +69,8 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 # Tenemos que agregar todos los context processor que tengamos a settings.
                 "miniblog.context_processors.all_names_products",
-                "miniblog.context_processors.all_names_categories"
+                "miniblog.context_processors.all_names_categories",
+                "miniblog.context_processors.profile_language"
 
             ],
 
@@ -134,10 +134,10 @@ USE_TZ = True
 
 import os
 
-LOCALE_PATHS = os.path.join(
-    BASE_DIR, 'locale'
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
 
-) 
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -154,6 +154,8 @@ import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # BASE_DIR es donde está el manage.py
 
+"""import sentry_sdk
+
 sentry_sdk.init( # Puede ir en cualquier lado del archivo settings.py
     dsn="https://c01571c75f4812c7e7282e90f512db71@o4507817866887168.ingest.us.sentry.io/4507860992851968",
     # Set traces_sample_rate to 1.0 to capture 100%
@@ -164,7 +166,7 @@ sentry_sdk.init( # Puede ir en cualquier lado del archivo settings.py
     # We recommend adjusting this value in production.
     profiles_sample_rate=1.0,
 )
-
+"""
 """ LOGGING = {
     'version': 1,
     'disable_existing_logger': False,

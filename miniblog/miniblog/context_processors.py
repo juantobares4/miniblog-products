@@ -2,6 +2,7 @@
 
 from django.core.cache import cache
 from product.models import Product, Category
+from users.models import Profile
 
 def all_names_products(request, ):
     products = cache.get('products')
@@ -21,5 +22,11 @@ def all_names_categories(request, ):
 
     return dict(
         names_categories = names
+
+    )
+
+def profile_language(request, ):
+    return dict(
+        profile = Profile.objects.get(user=request.user)
 
     )
