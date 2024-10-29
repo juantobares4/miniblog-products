@@ -5,6 +5,7 @@ from rest_framework.decorators import action # Los decoradores son métodos que 
 from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.views import APIView
 from product.models import Product, Category
 from api_v1.serializers.product_serializers import ProductSerializer
 from api_v1.paginations import Pagination
@@ -86,3 +87,32 @@ class ProductViewSet(ModelViewSet): # ModelViewSet viene con todos los métodos 
         )
 
         return response
+    
+""" class ProductApiView(APIView):
+    def get(self, request, *args, **kwargs):
+        product = Product.objects.all()
+        serializer = ProductSerializer(product, many=True)
+        product_id = self.kwargs['pk']
+
+        if product_id:
+            products = product.get(id = product_id)
+            serializer = ProductSerializer(products)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        ...
+
+from rest_framework import generics
+from rest_framework import mixins
+
+class ProductListCreateGenericApiView(
+    generics.GenericAPIView, 
+    mixins.ListModelMixin, 
+    mixins.CreateModelMixin
+):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs) """

@@ -56,10 +56,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "miniblog.urls"
 
+import os
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -223,3 +225,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100 # Limite de resultados mostrados. 
 
 }
+
+# SMTP es un protocolo.
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '4b8cdd199e02d9'
+EMAIL_HOST_PASSWORD = '39db643402076d'
+EMAIL_PORT = '2525'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'noreply@itec.com' 
